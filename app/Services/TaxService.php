@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-class TaxService
+use App\Contracts\TaxServiceContract;
+
+class TaxService implements TaxServiceContract
 {
     public function calculateTax(float $amount): float
     {

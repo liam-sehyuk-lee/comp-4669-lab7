@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Contracts\TaxServiceContract;
+use App\Services\TaxService;
 use App\Contracts\SubscriptionServiceContract;
 use App\Services\SubscriptionService as ServicesSubscriptionService;
 use Illuminate\Support\ServiceProvider;
@@ -18,10 +20,7 @@ class AppServiceProvider extends ServiceProvider
             'subscription-service', 
             fn() => new ServicesSubscriptionService
         );
-        // The above arrow function usage is equivalent to eg.
-        // $this->app->singleton('subscription-service', function() {
-        //     return new ServicesSubscriptionService;
-        // });
+        $this->app->bind(TaxServiceContract::class, TaxService::class);
     }
 
     /**
